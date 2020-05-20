@@ -1,0 +1,10 @@
+#display-container {
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: end;
+    background: #404040;
+    padding-right: 10px;
+    font-size: 24px;
+}

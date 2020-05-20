@@ -1,0 +1,21 @@
+.buttons-container {
+    margin: 0 auto;
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(5, 100px);
+
+    button {
+        outline: none;
+        border: none;
+        user-select: none;
+        background: #fff;
+        font-size: 30px;
+    }
+
+    button:hover {
+        background: #aaa;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+}
