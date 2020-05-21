@@ -35,7 +35,7 @@ class App extends Component {
     
 
 
-    let latest = this.state.input.toString().split(/[\+\/\-\*]+/);
+    let latest = this.state.input.toString().split(/[+/\-*]+/);
     
     // if(this.state.input.length>1)
     //   latest = this.state.input.split(/[\+\/\-\*]+/);
