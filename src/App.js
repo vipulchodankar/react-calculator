@@ -5,53 +5,58 @@ import Display from './components/Display'
 import Button from './components/Button'
 import ClearButton from './components/ClearButton'
 
+import {evaluate} from 'mathjs';
+
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      history : 'lol',
-      currentOperation: '123'
+      input: ''
     }
 
     this.append = this.append.bind(this);
     this.handleClear = this.handleClear.bind(this);
-  }
-
-  append() {
-    
+    this.handleEqual = this.handleEqual.bind(this);
   }
 
   handleClear() {
     alert("CLICKED");
     this.setState({
-      history: ' ',
-      currentOperation: ''
+      input: ''
     });
   }
+
+  append(val) {
+    this.setState({ input: this.state.input + val });
+  };
+
+  handleEqual() {
+    this.setState({ input: evaluate(this.state.input) });
+  };
 
   render() {
     return (
       <div className="App">
-        <Display history={this.state.history} currentOperation={this.state.currentOperation}/>
+        <Display input={this.state.input}/>
         <div className="buttons-container"> 
-          <ClearButton handleClear={this.handleClear}>Clear</ClearButton>
-          <Button>7</Button>
-          <Button>8</Button>
-          <Button>9</Button>
-          <Button>/</Button>
-          <Button>4</Button>
-          <Button>5</Button>
-          <Button>6</Button>
-          <Button>*</Button>
-          <Button>1</Button>
-          <Button>2</Button>
-          <Button>3</Button>
-          <Button>+</Button>
-          <Button>.</Button>
-          <Button>0</Button>
-          <Button>=</Button>
-          <Button>-</Button>
+          <ClearButton id="clear" handleClear={this.handleClear}>Clear</ClearButton>
+          <Button id="seven" handleClick={this.append}>7</Button>
+          <Button id="eight" handleClick={this.append}>8</Button>
+          <Button id="nine" handleClick={this.append}>9</Button>
+          <Button id="divide" handleClick={this.append}>/</Button>
+          <Button id="four" handleClick={this.append}>4</Button>
+          <Button id="five" handleClick={this.append}>5</Button>
+          <Button id="six" handleClick={this.append}>6</Button>
+          <Button id="multiply" handleClick={this.append}>*</Button>
+          <Button id="1" handleClick={this.append}>1</Button>
+          <Button id="2" handleClick={this.append}>2</Button>
+          <Button id="3" handleClick={this.append}>3</Button>
+          <Button id="add" handleClick={this.append}>+</Button>
+          <Button id="decimal" handleClick={this.append}>.</Button>
+          <Button id="zero" handleClick={this.append}>0</Button>
+          <Button id="equals" handleClick={() => this.handleEqual()}>=</Button>
+          <Button id="subtract" handleClick={this.append}>-</Button>
         </div>
       </div>
     )

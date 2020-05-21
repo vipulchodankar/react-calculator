@@ -3,8 +3,8 @@ import './Display.scss'
 
 const Display = props => (
     <div id="display-container">
-        <div id="history"> {props.history} </div>
-        <div id="display"> {props.currentOperation} </div>
+        {/* <div id="history"> {props.history} </div> */}
+        <div id="display"> {props.input} </div>
     </div>
 );
 

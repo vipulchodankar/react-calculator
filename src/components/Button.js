@@ -1,12 +1,12 @@
 import React from 'react'
 import './Button.scss'
 
-const isOperator = value => {
-    return !isNaN(value) || value === "." || value === "="
-}
+// const isOperator = value => {
+//     return !isNaN(value) || value === "." || value === "="
+// }
 
 const Button = props => (
-    <button>
+    <button onClick={() => props.handleClick(props.children)}>
         { props.children }
     </button>
 )
