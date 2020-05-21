@@ -13,3 +13,50 @@ body {
   width: 400px;
   margin: auto;
 }
+
+@media only screen and (max-width: 550px) {
+  .App{
+    width: 100vw;
+  }
+}
+
+.buttons-container {
+  margin: 0 auto;
+  // width: 420px;
+  background: #fff;
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(5, 100px);
+
+  button {
+      outline: none;
+      border: none;
+      user-select: none;
+      background: #fff;
+      font-size: 30px;
+  }
+
+  button:hover {
+      background: #aaa;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .buttons-container{
+      position: fixed;
+      bottom: 0;
+      width: 100vw;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(5, 100px);
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .buttons-container {
+      button {
+          font-size: 36px;
+      }
+  }
+}

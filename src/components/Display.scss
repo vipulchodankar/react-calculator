@@ -1,5 +1,5 @@
 #display-container {
-    height: 15vh;
+    height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -7,4 +7,13 @@
     background: #404040;
     padding-right: 10px;
     font-size: 24px;
+}
+
+@media only screen and (min-width: 1366px) {
+    #display-container {
+        padding-right: 20px;
+        height: 200px;
+        font-size: 30px;
+        margin-top: 15vh;
+    }
 }
