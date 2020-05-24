@@ -10,7 +10,6 @@ import {evaluate} from 'mathjs';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       input: ''
     }
@@ -20,58 +19,54 @@ class App extends Component {
     this.handleEqual = this.handleEqual.bind(this);
   }
 
+  // Clears input
   handleClear() {
     this.setState({
       input: ""
     });
   }
 
+  // Checks if item is an operator
   isOperator = value => {
     return value === "+" || value === "-" || value === "*" || value === "/"
   }
 
+  // Appends value to input
   append(val) {
-    // console.log(this.state.input.split(/[\+\/\-\*]+/));
-    
-
-
     let latest = this.state.input.toString().split(/[+/\-*]+/);
-    
-    // if(this.state.input.length>1)
-    //   latest = this.state.input.split(/[\+\/\-\*]+/);
 
-    // if(typeof(latest) === "undefined")
-    //   console.log("Undefined")
-    // else 
-    //   console.log();
-
+    // To prevent numbers from beginning from multiple 0s
     if(this.state.input == 0 && val == 0) {
       this.setState({ input: "0" });
     } 
 
+    // To prevent numbers to contain multiple decimals
     else if (latest[latest.length-1].includes(".") && val == ".") {
       this.setState({ input: this.state.input });
     }
 
+    // To deal with latest operators
     else if(this.isOperator(this.state.input[this.state.input.length - 2]) && this.isOperator(this.state.input[this.state.input.length - 1]) && this.isOperator(val)) {
-      console.log("HERE");
       this.setState({ input: this.state.input.slice(0, this.state.input.length - 2)  + val })
     }
 
+    // Finally append
     else {
       this.setState({ input: this.state.input + val });
     }
   };
 
+  // Function to evaluate input expression
   handleEqual() {
     try { 
+      // Incase number begins with 0, then display it with 0
       if(this.state.input[0] == "0")
         this.setState({ input: "0" + evaluate(this.state.input) }) 
       else 
-      this.setState({ input: evaluate(this.state.input) }) 
+        this.setState({ input: evaluate(this.state.input) }) 
     }
     catch(err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
